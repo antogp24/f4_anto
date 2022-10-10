@@ -1,0 +1,21 @@
+version(1);
+
+project_name = "4coder Anto Setup with Fleury's Layer";
+
+patterns = {
+    "*.cpp",
+    "*.h",
+    "*.bat",
+    "*.sh",
+    "*.4coder"
+};
+
+blacklist_patterns = {
+    ".*"
+};
+
+
+load_paths = {
+    { { {".", .relative = true, .recursive = true} }, .os = "win" }
+};
+
