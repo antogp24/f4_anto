@@ -2,6 +2,12 @@
  * Lister base
  */
 
+//~ NOTE(anto): Lister Bindings
+
+#include "4coder_fleury/anto/anto_map_ids.h"
+
+//~
+
 // TOP
 
 function Vec2_f32
@@ -86,7 +92,15 @@ begin_lister(Application_Links *app, Arena *arena){
     result.current = lister;
     lister->restore_all_point = begin_temp(lister->arena);
     View_Context ctx = view_current_context(app, view);
-    lister_set_map(lister, ctx.mapping, ctx.map_id);
+    
+    //~ NOTE(anto): The view_context mappings conflict with my up and down bindings in the lister
+#if 0
+    lister_set_map(lister, ctx.mapping, ctx.map_id); // NOTE: Default behavior
+#endif
+    lister_set_map(lister, &framework_mapping, mapping_get_map(&framework_mapping, mapid_lister));
+    
+    //~
+    
     return(result);
 }
 
@@ -526,6 +540,7 @@ run_lister(Application_Links *app, Lister *lister){
         
         Lister_Activation_Code result = ListerActivation_Continue;
         b32 handled = true;
+        
         switch (in.event.kind){
             case InputEventKind_TextInsert:
             {

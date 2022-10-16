@@ -61,7 +61,7 @@ indent_width = 4;
 default_tab_width = 4;
 
 // Theme
-default_theme_name = "theme-fleury";
+default_theme_name = "theme-casey";
 highlight_line_at_cursor = true;
 
 //Font
@@ -107,6 +107,6 @@ anto_cursor_should_anim_visual_mode = false;
 
 anto_cursor_should_glow_insert_mode = true;
 anto_cursor_should_anim_insert_mode = false;
-anto_cursor_soft_scalar_normal_mode = 4; // 0 (hard), 2 (soft) 3 (oval)
+anto_cursor_soft_scalar_normal_mode = 4; // 0 (hard), 4 (soft) 6 (oval)
 
-anto_cursor_modal_color_in_top_base = true;
+anto_cursor_modal_color_in_top_base = false;

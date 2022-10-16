@@ -981,11 +981,33 @@ isearch(Application_Links *app, Scan_Direction start_scan, i64 first_pos,
                 change_scan = Scan_Forward;
                 do_scan_action = true;
             }
+            
+            //~ NOTE(anto): Ctrl+N to navigate to the next result
+            
+            else if (match_key_code(&in, KeyCode_N) &&
+                     (has_modifier(&in.event.key.modifiers, KeyCode_Control) ||
+                      has_modifier(&in.event.key.modifiers, KeyCode_Alt))) {
+                change_scan = Scan_Forward;
+                do_scan_action = true;
+            }
+            //~
+            
             else if (match_key_code(&in, KeyCode_PageUp) ||
                      match_key_code(&in, KeyCode_Up)){
                 change_scan = Scan_Backward;
                 do_scan_action = true;
             }
+            
+            //~ NOTE(anto): Ctrl+P to navigate to the previous result
+            
+            else if (match_key_code(&in, KeyCode_P) &&
+                     (has_modifier(&in.event.key.modifiers, KeyCode_Control) ||
+                      has_modifier(&in.event.key.modifiers, KeyCode_Alt))) {
+                change_scan = Scan_Backward;
+                do_scan_action = true;
+            }
+            //~
+            
             else{
                 // NOTE(allen): is the user trying to execute another command?
                 View_Context ctx = view_current_context(app, view);

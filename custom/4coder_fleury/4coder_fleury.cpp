@@ -487,7 +487,8 @@ void custom_layer_init(Application_Links *app)
     {
         Thread_Context *tctx = get_thread_context(app);
         mapping_init(tctx, &framework_mapping);
-#if 0
+        
+#if 0 // NOTE(anto): Fuck the default bindings
         String_Const_u8 bindings_file = string_u8_litexpr("bindings.4coder");
         F4_SetAbsolutelyNecessaryBindings(&framework_mapping);
         F4_SetDefaultBindings(&framework_mapping);
@@ -614,6 +615,7 @@ CUSTOM_DOC("Fleury startup event")
             view_set_passive(app, compilation_view, true);
             global_compilation_view = compilation_view;
             view_set_buffer(app, compilation_view, comp_id, 0);
+            set_fancy_compilation_buffer_font(app); // NOTE(anto): Looks nice
         }
         
         view_set_active(app, view);

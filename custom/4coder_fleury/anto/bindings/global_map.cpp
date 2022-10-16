@@ -67,7 +67,7 @@ Bind(quick_swap_buffer,             KeyCode_BackwardSlash, KeyCode_Alt);
 Bind(jump_to_last_point,            KeyCode_P, KeyCode_Control);
 Bind(list_all_functions_current_buffer_lister, KeyCode_I, KeyCode_Control, KeyCode_Shift);
 
-// Fuck fleury
+// Fleury stuff
 BindCore(fleury_startup, CoreCode_Startup);
 BindCore(default_try_exit, CoreCode_TryExit);
 Bind(exit_4coder,          KeyCode_F4, KeyCode_Alt);

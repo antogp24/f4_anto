@@ -3,10 +3,14 @@
 #ifndef ANTO_MAP_IDS_H
 #define ANTO_MAP_IDS_H
 
+// Modes
 extern String_ID mapid_shared;
 extern String_ID mapid_normal;
 extern String_ID mapid_visual;
 extern String_ID mapid_insert;
+
+// Misc.
+extern String_ID mapid_lister;
 
 
 typedef enum anto_cursor_styles {

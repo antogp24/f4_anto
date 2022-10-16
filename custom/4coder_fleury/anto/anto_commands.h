@@ -96,16 +96,24 @@ CUSTOM_COMMAND_SIG( write_square ) {
     view_set_cursor( app, view, seek_pos( view_get_cursor_pos( app, view ) - 1 ) );
 }
 
-CUSTOM_COMMAND_SIG( write_squotes ) {
-    View_ID view = get_active_view( app, 0 );
-    write_string( app, string_u8_litexpr( "\'\'" ) );
-    view_set_cursor( app, view, seek_pos( view_get_cursor_pos( app, view ) - 1 ) );
-}
-
 CUSTOM_COMMAND_SIG( write_dquotes ) {
     View_ID view = get_active_view( app, 0 );
     write_string( app, string_u8_litexpr( "\"\"" ) );
     view_set_cursor( app, view, seek_pos( view_get_cursor_pos( app, view ) - 1 ) );
+}
+
+// Lister
+
+CUSTOM_COMMAND_SIG( lister_next ) {
+    View_ID view = get_active_view(app, 0);
+    Lister *lister = view_get_lister(app, view);
+    lister->handlers.navigate(app, view, lister, 1); // Forward
+}
+
+CUSTOM_COMMAND_SIG( lister_prev ) {
+    View_ID view = get_active_view(app, 0);
+    Lister *lister = view_get_lister(app, view);
+    lister->handlers.navigate(app, view, lister, -1); // Backwards
 }
 
 #endif //ANTO_COMMANDS_H

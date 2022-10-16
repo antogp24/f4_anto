@@ -3,10 +3,15 @@
 String_ID file_map_id = vars_save_string_lit("keys_file");
 String_ID code_map_id = vars_save_string_lit("keys_code");
 
+// Modes
 mapid_shared = vars_save_string_lit( "mapid_shared" );
 mapid_normal = vars_save_string_lit( "mapid_normal" );
 mapid_visual = vars_save_string_lit( "mapid_visual" );
 mapid_insert = vars_save_string_lit( "mapid_insert" );
+
+// Misc.
+mapid_lister = vars_save_string_lit( "mapid_lister" );
+
 
 //~ NOTE(anto): Fleury stuff
 
@@ -44,13 +49,12 @@ BindTextInput(fleury_write_text_and_auto_indent);
 #include "bindings/modes/insert_map.cpp"
 
 
-/* This is to make sure that the default bindings on the buffers will be mapid_normal. */
+// This is to make sure that the default bindings on the buffers will be mapid_normal.
 SelectMap( file_map_id );
 ParentMap( mapid_normal );
 
 SelectMap( code_map_id );
 ParentMap( mapid_normal );
-
 
 //~ NOTE(anto): Fleury stuff
 
@@ -70,3 +74,7 @@ GlobalCommandMapReroute[2].From = code_map_id;
 GlobalCommandMapReroute[2].To = code_command_map_id;
 
 //~
+
+// Misc.
+SelectMap( mapid_lister );
+#include "bindings/misc/lister_map.cpp"

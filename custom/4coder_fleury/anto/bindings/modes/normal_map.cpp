@@ -25,6 +25,7 @@ Bind( goto_beginning_of_file,               KeyCode_G );
 Bind( goto_end_of_file,                     KeyCode_G, KeyCode_Shift );
 Bind( seek_beginning_of_textual_line,       KeyCode_0 );
 Bind( seek_end_of_textual_line,             KeyCode_4, KeyCode_Shift );
+Bind( seek_end_of_textual_line,             KeyCode_4);
 Bind( goto_line,                            KeyCode_G, KeyCode_Alt );
 Bind( search,                               KeyCode_ForwardSlash );
 Bind( reverse_search,                       KeyCode_ForwardSlash, KeyCode_Shift );
@@ -37,6 +38,7 @@ Bind( list_all_locations_of_identifier, KeyCode_L, KeyCode_Alt );
 // Panels Actions
 Bind( change_active_panel,   KeyCode_Comma );
 Bind( close_panel,           KeyCode_0, KeyCode_Alt );
+Bind( close_panel,           KeyCode_0, KeyCode_Control );
 Bind( swap_panels,           KeyCode_1 );
 Bind( open_panel_hsplit,     KeyCode_2 );
 Bind( open_panel_vsplit,     KeyCode_3 );

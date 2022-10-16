@@ -50,4 +50,4 @@ Bind( move_down_to_blank_line_end,       KeyCode_J, KeyCode_Control );
 Bind( goto_beginning_of_file,               KeyCode_G );
 Bind( goto_end_of_file,                     KeyCode_G, KeyCode_Shift );
 Bind( seek_beginning_of_textual_line,       KeyCode_0 );
-Bind( seek_end_of_textual_line,             KeyCode_4, KeyCode_Shift);
+Bind( seek_end_of_textual_line,             KeyCode_4);
