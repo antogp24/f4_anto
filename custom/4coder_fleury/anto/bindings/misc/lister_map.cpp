@@ -1,6 +1,8 @@
 // Main reason to make this file
 Bind(lister_next, KeyCode_N, KeyCode_Control);
 Bind(lister_prev, KeyCode_P, KeyCode_Control);
+Bind(lister_next, KeyCode_N, KeyCode_Alt);
+Bind(lister_prev, KeyCode_P, KeyCode_Alt);
 
 // Non intrusive:
 Bind(save,       KeyCode_S, KeyCode_Control);
