@@ -1,5 +1,6 @@
 // Most Used:
 Bind(save,                        KeyCode_S, KeyCode_Control);
+Bind(save,                        KeyCode_S, KeyCode_Alt);
 Bind(search,                      KeyCode_F, KeyCode_Control);
 
 Bind( move_left,  KeyCode_Left );

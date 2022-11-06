@@ -99,14 +99,14 @@ default_flags_sh  = "-g";
 // f4_disable_cursor_token_occurance = true;
 
 // NOTE(anto): FOR NO DISTRACTIONS
-anto_cursor_should_glow_normal_mode = true;
+anto_cursor_should_glow_normal_mode = false;
 anto_cursor_should_anim_normal_mode = false;
 
-anto_cursor_should_glow_visual_mode = true;
+anto_cursor_should_glow_visual_mode = false;
 anto_cursor_should_anim_visual_mode = false;
 
-anto_cursor_should_glow_insert_mode = true;
+anto_cursor_should_glow_insert_mode = false;
 anto_cursor_should_anim_insert_mode = false;
-anto_cursor_soft_scalar_normal_mode = 4; // 0 (hard), 4 (soft) 6 (oval)
+anto_cursor_soft_scalar_normal_mode = 3; // 0 (hard), 3 (soft) 6 (oval)
 
 anto_cursor_modal_color_in_top_base = false;

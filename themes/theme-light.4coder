@@ -1,0 +1,75 @@
+defcolor_bar                   = 0xFFD0D0D0;
+defcolor_base                  = 0xff383A42;
+defcolor_pop1                  = 0xffde8150;
+defcolor_pop2                  = 0xFFFF0000;
+defcolor_back                  = 0xFFFAFAFA;
+defcolor_margin                = 0xffFFE3BB;
+defcolor_margin_hover          = defcolor_back;
+defcolor_margin_active         = defcolor_back;
+defcolor_list_item             = { defcolor_back, defcolor_back};
+defcolor_list_item_hover       = { defcolor_back, defcolor_margin};
+defcolor_list_item_active      = { 0xffFFE3BB, defcolor_margin};
+defcolor_cursor                = { 0xFF00EE00, 0xffe0741b, 0xff1be094, 0xffba60c4 };
+defcolor_at_cursor             = defcolor_back;
+defcolor_highlight_cursor_line = 0xFFF2F2F2;
+defcolor_highlight             = 0xFF303040;
+defcolor_at_highlight          = 0xFFFF44DD;
+defcolor_mark                  = 0xFF494949;
+defcolor_text_default          = 0xff383A42;
+defcolor_comment               = 0xff666666;
+defcolor_comment_pop           = { 0xff2ab34f, 0xFFdb2828 };
+defcolor_keyword               = 0xffAC43AB;
+defcolor_str_constant          = 0xff54A054;
+defcolor_char_constant         = defcolor_str_constant;
+defcolor_int_constant          = 0xffA2792E;
+defcolor_float_constant        = 0xffA2792E;
+defcolor_bool_constant         = 0xffA2792E;
+defcolor_preproc               = 0xFFdc7575;
+defcolor_include               = defcolor_keyword;
+defcolor_special_character     = 0xFFFF0000;
+defcolor_ghost_character       = 0xFF4E5E46;
+defcolor_highlight_junk        = 0x88ff0000;
+defcolor_highlight_white       = 0xFF003A3A;
+defcolor_paste                 = 0xFFDDEE00;
+defcolor_undo                  = 0xFF00DDEE;
+defcolor_back_cycle            = { defcolor_back, defcolor_back, defcolor_back, defcolor_back, defcolor_back, defcolor_back, defcolor_back, defcolor_back, defcolor_back, defcolor_back, defcolor_back};
+defcolor_text_cycle            =
+{
+    0xFFAD66FF, // Purple
+    0xFF4EA24B, // Green
+    0xFF0F4A48, // Blue
+    0xFFF2BC12, // Yellow
+};
+defcolor_line_numbers_back     = 0xFF101010;
+defcolor_line_numbers_text     = 0xFF404040;
+fleury_color_syntax_crap           = 0xff5c4d3c;
+fleury_color_operators             = 0xFF1485BA;
+fleury_color_inactive_pane_overlay = 0x11000000;
+fleury_color_inactive_pane_background = defcolor_back;
+fleury_color_file_progress_bar     = 0x60634323;
+fleury_color_brace_highlight       = { 0xffFF7D48 };
+fleury_color_brace_line            = { 0x809ba290 };
+fleury_color_brace_annotation      = { 0x809ba290 };
+//fleury_color_index_product_type    = 0xFFedb211;
+fleury_color_index_product_type    = defcolor_keyword;
+fleury_color_index_sum_type        = 0xFFa7eb13;
+fleury_color_index_function        = 0xFF4A7FEF;
+fleury_color_index_macro           = 0xFFE4564A;
+fleury_color_index_constant        = defcolor_str_constant;
+fleury_color_index_comment_tag     = 0xffffae00;
+fleury_color_index_decl            = 0xffc9598a;
+fleury_color_cursor_macro          = 0xffde2368;
+fleury_color_cursor_power_mode     = 0xffefaf2f;
+fleury_color_cursor_inactive       = 0x88ff0000;
+fleury_color_plot_cycle            = { 0xff03d3fc, 0xff22b80b, 0xfff0bb0c, 0xfff0500c };
+fleury_color_token_highlight       = 0x88f2d357;
+fleury_color_token_minor_highlight = 0x44d19045;
+fleury_color_error_annotation      = 0xffff0000;
+fleury_color_lego_grab             = 0xffefaf6f;
+fleury_color_lego_splat            = 0xffefaaef;
+fleury_color_comment_user_name     = 0xff22252B;
+
+// NOTE(anto): Cursor properties
+anto_normal_cursor_color = 0xff526FFF;
+anto_visual_cursor_color = 0xff526FFF;
+anto_insert_cursor_color = 0xff526FFF;
