@@ -8,6 +8,12 @@ Bind( move_right, KeyCode_Right );
 Bind( move_up,    KeyCode_Up );
 Bind( move_down,  KeyCode_Down );
 
+Bind( redo,  KeyCode_Z, KeyCode_Control, KeyCode_Shift );
+Bind( undo,  KeyCode_Z, KeyCode_Control );
+Bind( cut,   KeyCode_X, KeyCode_Control );
+Bind( copy,  KeyCode_C, KeyCode_Control );
+Bind( paste, KeyCode_V, KeyCode_Control );
+
 Bind(interactive_new,               KeyCode_N,     KeyCode_Control);
 Bind(interactive_open_or_new,       KeyCode_O,     KeyCode_Control);
 Bind(interactive_open_or_new,       KeyCode_O,     KeyCode_Alt);

@@ -1,8 +1,14 @@
+
+#define MOVE_UP_KEY KeyCode_E
+#define MOVE_DOWN_KEY KeyCode_N
+#define MOVE_LEFT_KEY KeyCode_S
+#define MOVE_RIGHT_KEY KeyCode_T
+
 // Selection Actions
 Bind( delete_char,         KeyCode_X );
 Bind( delete_line,         KeyCode_D, KeyCode_Shift );
-Bind( move_line_up,        KeyCode_K, KeyCode_Alt );
-Bind( move_line_down,      KeyCode_J, KeyCode_Alt );
+Bind( move_line_up,        MOVE_UP_KEY, KeyCode_Alt );
+Bind( move_line_down,      MOVE_DOWN_KEY, KeyCode_Alt );
 Bind( duplicate_line,      KeyCode_L, KeyCode_Shift );
 Bind( comment_line_toggle, KeyCode_Semicolon );
 
@@ -49,14 +55,14 @@ Bind( interactive_kill_buffer,   KeyCode_K, KeyCode_Shift );
 // Replacing Actions
 Bind( query_replace, KeyCode_R );
 
-// Fuck yes, vim
+// Vim-like
 Bind( go_to_insert_mode, KeyCode_I );
 Bind( go_to_visual_mode, KeyCode_V );
 Bind( go_to_visual_line, KeyCode_V, KeyCode_Shift );
-Bind( move_left,         KeyCode_H );
-Bind( move_right,        KeyCode_L );
-Bind( move_up,           KeyCode_K );
-Bind( move_down,         KeyCode_J );
+Bind( move_left,         MOVE_LEFT_KEY );
+Bind( move_right,        MOVE_RIGHT_KEY );
+Bind( move_up,           MOVE_UP_KEY );
+Bind( move_down,         MOVE_DOWN_KEY );
 
 // Vim Actions
 Bind( sol_ins,     KeyCode_I, KeyCode_Shift );
@@ -68,14 +74,14 @@ Bind( prev_ln_ins, KeyCode_O, KeyCode_Shift );
 // Boundary Navigation Actions
 Bind( move_left_token_boundary,          KeyCode_B );
 Bind( move_right_token_boundary,         KeyCode_W );
-Bind( move_left_alpha_numeric_boundary,  KeyCode_H,     KeyCode_Control );
-Bind( move_right_alpha_numeric_boundary, KeyCode_L,     KeyCode_Control );
-Bind( move_up_to_blank_line_end,         KeyCode_K,     KeyCode_Control );
-Bind( move_down_to_blank_line_end,       KeyCode_J,     KeyCode_Control );
-Bind( move_left_alpha_numeric_boundary,  KeyCode_Left,  KeyCode_Control );
-Bind( move_right_alpha_numeric_boundary, KeyCode_Right, KeyCode_Control );
-Bind( move_up_to_blank_line_end,         KeyCode_Up,    KeyCode_Control );
-Bind( move_down_to_blank_line_end,       KeyCode_Down,  KeyCode_Control );
+Bind( move_left_alpha_numeric_boundary,  MOVE_LEFT_KEY,  KeyCode_Control );
+Bind( move_right_alpha_numeric_boundary, MOVE_RIGHT_KEY, KeyCode_Control );
+Bind( move_up_to_blank_line_end,         MOVE_UP_KEY,    KeyCode_Control );
+Bind( move_down_to_blank_line_end,       MOVE_DOWN_KEY,  KeyCode_Control );
+Bind( move_left_alpha_numeric_boundary,  KeyCode_Left,   KeyCode_Control );
+Bind( move_right_alpha_numeric_boundary, KeyCode_Right,  KeyCode_Control );
+Bind( move_up_to_blank_line_end,         KeyCode_Up,     KeyCode_Control );
+Bind( move_down_to_blank_line_end,       KeyCode_Down,   KeyCode_Control );
 
 // Fleury:
 //Bind( f4_search_for_definition__project_wide, KeyCode_J, KeyCode_Shift );

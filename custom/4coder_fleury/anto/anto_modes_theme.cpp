@@ -1,5 +1,5 @@
 
-//~ NOTE(F4): This file is included in "4coder_fleury.cpp" and "4coder_lists.cpp"
+//~ NOTE(anto): This file is included in "4coder_fleury.cpp" and "4coder_lists.cpp"
 
 if (fcolor_id(anto_normal_cursor_color).id != 0)
 {

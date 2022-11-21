@@ -82,13 +82,6 @@ CUSTOM_COMMAND_SIG( mouse_visual_selection ) {
     click_set_cursor_and_mark( app );
 }
 
-CUSTOM_COMMAND_SIG( mouse_insert ) {
-    if (current_anto_cursor != anto_cursor_insert) {
-        go_to_insert_mode( app );
-    }
-    click_set_cursor( app );
-}
-
 // Dumb Autocomplete Commands
 
 CUSTOM_COMMAND_SIG( write_curly ) {

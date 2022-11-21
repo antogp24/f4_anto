@@ -27,13 +27,11 @@ MappingScope( );
 SelectMapping( &framework_mapping );
 
 SelectMap( global_map_id );
-#include "bindings/global_map.cpp"
 
 SelectMap( mapid_shared );
 ParentMap(global_map_id);
 #include "bindings/global_map.cpp"
 Bind( go_to_normal_mode, KeyCode_Escape );
-Bind( go_to_normal_mode, KeyCode_N, KeyCode_Alt );
 
 SelectMap( mapid_normal );
 ParentMap( mapid_shared );
