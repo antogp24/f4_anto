@@ -7,27 +7,9 @@
 
 #include "anto_map_ids.h"
 
-// Default values:
-static b32 anto_cursor_should_glow = true;
-static b32 anto_cursor_should_anim = true;
-static b32 anto_cursor_draw_text_c = false;
-static b32 anto_draw_mark_range_vs = true;
+static b32 config_anto_cursor_should_glow = false;
 
-// From config
-
-static b32 config_anto_cursor_should_glow_normal_mode = false;
-static b32 config_anto_cursor_should_anim_normal_mode = false;
-
-static b32 config_anto_cursor_should_glow_visual_mode = false;
-static b32 config_anto_cursor_should_anim_visual_mode = false;
-
-static b32 config_anto_cursor_should_glow_insert_mode = false;
-static b32 config_anto_cursor_should_anim_insert_mode = false;
-
-// Misc.
-
-static u64 config_anto_cursor_soft_scalar_normal_mode = 0;
-
+// Helper Functions
 
 u32 get_face_size(Application_Links* app)
 {

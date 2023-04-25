@@ -42,7 +42,6 @@ Bind(project_fkey_command, KeyCode_F16);
 BindMouseWheel(mouse_wheel_scroll);
 BindMouseWheel(mouse_wheel_change_face_size, KeyCode_Control);
 BindMouse(click_set_cursor_and_mark,         MouseCode_Left);
-BindMouse(mouse_visual_selection,            MouseCode_Left);
 BindMouseRelease(click_set_cursor,           MouseCode_Left);
 BindCore(click_set_cursor_and_mark,          CoreCode_ClickActivateView);
 BindMouseMove(click_set_cursor_if_lbutton);

@@ -531,18 +531,26 @@ IsFileReadable(String_Const_u8 path)
 CUSTOM_COMMAND_SIG(fleury_startup)
 CUSTOM_DOC("Fleury startup event")
 {
-    ProfileScope(app, "default startup");
+    //~ NOTE(rjf): Default 4coder initialization.
     
+    ProfileScope(app, "default startup");
     User_Input input = get_current_input(app);
+    
     if(!match_core_code(&input, CoreCode_Startup))
     {
         return;
     }
     
-    //~ NOTE(rjf): Default 4coder initialization.
     String_Const_u8_Array file_names = input.event.core.file_names;
     load_themes_default_folder(app);
     default_4coder_initialize(app, file_names);
+    default_4coder_one_panel(app, file_names);
+    
+    b32 auto_load = def_get_config_b32(vars_save_string_lit("automatically_load_project"));
+    if (auto_load)
+    {
+        load_project(app);
+    }
     
     //~ NOTE(rjf): Open special buffers.
     {
@@ -590,56 +598,8 @@ CUSTOM_DOC("Fleury startup event")
     }
     
     //~ NOTE(rjf): Initialize panels
-    {
-        Buffer_Identifier comp = buffer_identifier(string_u8_litexpr("*compilation*"));
-        Buffer_Identifier left  = buffer_identifier(string_u8_litexpr("*calc*"));
-        Buffer_Identifier right = buffer_identifier(string_u8_litexpr("*messages*"));
-        Buffer_ID comp_id = buffer_identifier_to_id(app, comp);
-        Buffer_ID left_id = buffer_identifier_to_id(app, left);
-        //Buffer_ID right_id = buffer_identifier_to_id(app, right); // NOTE(anto): Don't want it.
-        
-        // NOTE(rjf): Left Panel
-        View_ID view = get_active_view(app, Access_Always);
-        new_view_settings(app, view);
-        view_set_buffer(app, view, left_id, 0);
-        
-        // NOTE(rjf): Bottom panel
-        View_ID compilation_view = 0;
-        {
-            compilation_view = open_view(app, view, ViewSplit_Bottom);
-            new_view_settings(app, compilation_view);
-            Buffer_ID buffer = view_get_buffer(app, compilation_view, Access_Always);
-            Face_ID face_id = get_face_id(app, buffer);
-            Face_Metrics metrics = get_face_metrics(app, face_id);
-            view_set_split_pixel_size(app, compilation_view, (i32)(metrics.line_height*5.f)); // NOTE(anto): 5 lines is better than 4.
-            view_set_passive(app, compilation_view, true);
-            global_compilation_view = compilation_view;
-            view_set_buffer(app, compilation_view, comp_id, 0);
-            set_fancy_compilation_buffer_font(app); // NOTE(anto): Looks nice.
-        }
-        
-        view_set_active(app, view);
-        
-        // NOTE(anto): Don't want to close the right panel, as I allways do.
-#if 0
-        //NOTE(rjf): Right Panel
-        open_panel_vsplit(app);
-        View_ID right_view = get_active_view(app, Access_Always);
-        view_set_buffer(app, right_view, right_id, 0);
-        
-        //NOTE(rjf): Restore Active to Left
-        view_set_active(app, view);
-#endif
-    }
     
-    //~ NOTE(rjf): Auto-Load Project.
-    {
-        b32 auto_load = def_get_config_b32(vars_save_string_lit("automatically_load_project"));
-        if (auto_load)
-        {
-            load_project(app);
-        }
-    }
+    // Gone.
     
     //~ NOTE(rjf): Set misc options.
     {

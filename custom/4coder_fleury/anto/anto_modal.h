@@ -6,9 +6,11 @@
 #include "anto_map_ids.h"
 #include "anto_modes_theme.h"
 
-//NOTE(anto): The modes on startup code is in 4coder_fleury.cpp
-//NOTE(anto): The cursor changing code is in 4coder_fleury_cursor.cpp
-//NOTE(anto): The default mode on switch buffer code is in 4coder_lists.cpp
+// NOTE(anto): The modes on startup code is in 4coder_fleury.cpp
+// NOTE(anto): The cursor changing code is in 4coder_fleury_cursor.cpp
+// NOTE(anto): The default mode on switch buffer code is in 4coder_lists.cpp
+// NOTE(anto): Modified 4coder_lister_base.cpp
+// NOTE(anto): Ctrl+n Ctrl+p in search, on 4coder_base_commands.cpp
 
 static b32 config_anto_cursor_modal_color_in_top_base = false; // by default
 

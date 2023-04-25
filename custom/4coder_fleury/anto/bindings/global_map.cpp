@@ -45,19 +45,21 @@ Bind(project_fkey_command, KeyCode_F16);
 // Mouse:
 BindMouseWheel(mouse_wheel_scroll);
 BindMouseWheel(mouse_wheel_change_face_size, KeyCode_Control);
-BindMouse(click_set_cursor_and_mark,         MouseCode_Left);
-BindMouse(mouse_visual_selection,            MouseCode_Left);
-BindMouseRelease(click_set_cursor,           MouseCode_Left);
-BindCore(click_set_cursor_and_mark,          CoreCode_ClickActivateView);
-BindMouseMove(click_set_cursor_if_lbutton);
+// NOTE(anto): Modified @4coder_base_commands.cpp
+BindMouse(mouse_insert_drag,        MouseCode_Left);
+BindMouseRelease(click_set_cursor,  MouseCode_Left);
+BindMouse(mouse_visual_selection,   MouseCode_Right);
+BindMouseRelease(click_set_cursor,  MouseCode_Right);
+BindCore(click_set_cursor_and_mark, CoreCode_ClickActivateView);
+BindMouseMove(click_set_cursor_if_lr_button);
 
 
 // Misc:
-Bind(keyboard_macro_start_recording , KeyCode_U, KeyCode_Control);
-Bind(keyboard_macro_finish_recording, KeyCode_U, KeyCode_Control, KeyCode_Shift);
-Bind(keyboard_macro_replay,           KeyCode_U, KeyCode_Alt);
+Bind(keyboard_macro_start_recording , KeyCode_LeftBracket, KeyCode_Control);
+Bind(keyboard_macro_finish_recording, KeyCode_LeftBracket, KeyCode_Control, KeyCode_Shift);
+Bind(keyboard_macro_replay,           KeyCode_LeftBracket, KeyCode_Alt);
 Bind(change_active_panel_backwards, KeyCode_Comma, KeyCode_Control, KeyCode_Shift);
-//Bind(open_in_other,                 KeyCode_O, KeyCode_Alt);
+Bind(open_in_other,                 KeyCode_O, KeyCode_Alt);
 Bind(project_go_to_root_directory,  KeyCode_H, KeyCode_Control);
 Bind(save_all_dirty_buffers,        KeyCode_S, KeyCode_Control, KeyCode_Shift);
 Bind(change_to_build_panel,         KeyCode_Period, KeyCode_Alt);

@@ -299,7 +299,7 @@ draw_background_and_margin(Application_Links *app, View_ID view, b32 is_active_v
 function Rect_f32
 draw_background_and_margin(Application_Links *app, View_ID view, b32 is_active_view){
     FColor margin_color = get_panel_margin_color(is_active_view?UIHighlight_Active:UIHighlight_None);
-    return(draw_background_and_margin(app, view, margin_color, fcolor_id(defcolor_back), 3.f));
+    return(draw_background_and_margin(app, view, margin_color, fcolor_id(defcolor_back), 10.0f));
 }
 
 function Rect_f32

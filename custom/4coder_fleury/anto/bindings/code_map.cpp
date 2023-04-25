@@ -31,5 +31,5 @@ Bind(jump_to_definition_at_cursor, KeyCode_W, KeyCode_Control);
 
 // NOTE(anto): Fleury stuff
 BindTextInput(fleury_write_text_and_auto_indent);
-BindMouse(f4_lego_click_store_token_1, MouseCode_Right);
-BindMouse(f4_lego_click_store_token_2, MouseCode_Middle);
+// BindMouse(f4_lego_click_store_token_1, MouseCode_Right);
+// BindMouse(f4_lego_click_store_token_2, MouseCode_Middle);

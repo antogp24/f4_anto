@@ -55,8 +55,12 @@ Bind(view_jump_list_with_lister,  KeyCode_Period, KeyCode_Control, KeyCode_Shift
 
 // Fleury:
 BindTextInput(fleury_write_text_input);
-BindMouse(mouse_visual_selection,   MouseCode_Left); // NOTE(anto): Now its smort
-BindMouseRelease(click_set_cursor,  MouseCode_Left);
-BindCore(click_set_cursor_and_mark, CoreCode_ClickActivateView);
-BindMouseMove(click_set_cursor_if_lbutton);
 Bind(fleury_write_zero_struct,      KeyCode_0, KeyCode_Control);
+
+// NOTE(anto): Modified @4coder_base_commands.cpp
+BindMouse(mouse_insert_drag,        MouseCode_Left);
+BindMouseRelease(click_set_cursor,  MouseCode_Left);
+BindMouse(mouse_visual_selection,   MouseCode_Right);
+BindMouseRelease(click_set_cursor,  MouseCode_Right);
+BindCore(click_set_cursor_and_mark, CoreCode_ClickActivateView);
+BindMouseMove(click_set_cursor_if_lr_button);

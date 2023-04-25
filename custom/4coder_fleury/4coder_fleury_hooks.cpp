@@ -194,17 +194,18 @@ F4_RenderBuffer(Application_Links *app, View_ID view_id, Face_ID face_id,
         F4_RenderDividerComments(app, buffer, view_id, text_layout_id);
     }
     
-    // NOTE(rjf): Cursor Mark Range
-    if(is_active_view && fcoder_mode == FCoderMode_Original)
-    {
-        F4_HighlightCursorMarkRange(app, view_id);
-    }
-    
     // NOTE(allen): Cursor shape
     Face_Metrics metrics = get_face_metrics(app, face_id);
     u64 cursor_roundness_100 = def_get_config_u64(app, vars_save_string_lit("cursor_roundness"));
     f32 cursor_roundness = metrics.normal_advance*cursor_roundness_100*0.01f;
     f32 mark_thickness = (f32)def_get_config_u64(app, vars_save_string_lit("mark_thickness"));
+    
+    // NOTE(rjf): Cursor Mark Range
+    // NOTE(anto): Only draw the range in visual mode
+    if(is_active_view && fcoder_mode == FCoderMode_Original && current_anto_cursor == anto_cursor_visual)
+    {
+        F4_HighlightCursorMarkRange(app, view_id, cursor_roundness, mark_thickness, text_layout_id, frame_info, buffer);
+    }
     
     // NOTE(rjf): Cursor
     switch (fcoder_mode)
@@ -417,12 +418,14 @@ F4_Render(Application_Links *app, Frame_Info frame_info, View_ID view_id)
     View_ID active_view = get_active_view(app, Access_Always);
     b32 is_active_view = (active_view == view_id);
     
+    Buffer_ID buffer = view_get_buffer(app, view_id, Access_Always);
+    String_Const_u8 buffer_name = push_buffer_base_name(app, scratch, buffer);
+    
+    // NOTE(anto): Prefer the default background and margin
+#if 0
     f32 margin_size = (f32)def_get_config_u64(app, vars_save_string_lit("f4_margin_size"));
     Rect_f32 view_rect = view_get_screen_rect(app, view_id);
     Rect_f32 region = rect_inner(view_rect, margin_size);
-    
-    Buffer_ID buffer = view_get_buffer(app, view_id, Access_Always);
-    String_Const_u8 buffer_name = push_buffer_base_name(app, scratch, buffer);
     
     //~ NOTE(rjf): Draw background.
     {
@@ -455,7 +458,8 @@ F4_Render(Application_Links *app, Frame_Info frame_info, View_ID view_id)
         }
         draw_margin(app, view_rect, region, color);
     }
-    
+#endif
+    Rect_f32 region = draw_background_and_margin(app, view_id, is_active_view);
     Rect_f32 prev_clip = draw_set_clip(app, region);
     
     Face_ID face_id = get_face_id(app, buffer);
