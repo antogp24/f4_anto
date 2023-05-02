@@ -1,4 +1,5 @@
 #include "anto_modal.h"
+#include "anto_search.h"
 #include "anto_commands.h"
 
 // Modes

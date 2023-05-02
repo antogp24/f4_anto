@@ -296,10 +296,10 @@ F4_Cursor_RenderEmacsStyle(Application_Links *app, View_ID view_id, b32 is_activ
                 
                 //~ NOTE(anto): Only glow the cursor if it's enabled in the config.
                 
-                if (config_anto_cursor_should_glow)
+                if (config_anto_cursor_should_glow && is_active_view)
                 {                    
                     // NOTE(rjf): GLOW IT UP
-                    for(int glow = 0; glow < 20; ++glow)
+                    for(int glow = 0; glow < 30; ++glow)
                     {
                         f32 alpha = 0.1f - (power_mode.enabled ? (glow*0.005f) : (glow*0.015f));
                         if(alpha > 0)
@@ -322,14 +322,19 @@ F4_Cursor_RenderEmacsStyle(Application_Links *app, View_ID view_id, b32 is_activ
                 //~
                 
             }
-            C4_RenderCursorSymbolThingy(app, global_mark_rect, roundness, 2.f,
-                                        fcolor_resolve(fcolor_change_alpha(fcolor_argb(mark_color), 0.5f)), mark_type, text_layout_id);
-			C4_RenderCursorSymbolThingy(app, target_mark, roundness, 2.f,
-                                        fcolor_resolve(fcolor_change_alpha(fcolor_argb(mark_color), 0.75f)), mark_type, text_layout_id);
+            if (is_active_view)
+            {
+                C4_RenderCursorSymbolThingy(app, global_mark_rect, roundness, 2.f,
+                                            fcolor_resolve(fcolor_change_alpha(fcolor_argb(mark_color), 0.5f)), mark_type, text_layout_id);
+                C4_RenderCursorSymbolThingy(app, target_mark, roundness, 2.f,
+                                            fcolor_resolve(fcolor_change_alpha(fcolor_argb(mark_color), 0.75f)), mark_type, text_layout_id);
+            }
         }
     }
-    
-    draw_set_clip(app, clip);
+    if (is_active_view)
+    {
+        draw_set_clip(app, clip);
+    }
 }
 
 internal b32

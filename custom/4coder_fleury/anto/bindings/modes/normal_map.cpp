@@ -81,8 +81,11 @@ Bind( half_page_up,                      KeyCode_U,      KeyCode_Control );
 Bind( half_page_down,                    KeyCode_D,      KeyCode_Control );
 Bind( move_up_to_blank_line_end,         MOVE_UP_KEY,    KeyCode_Control );
 Bind( move_down_to_blank_line_end,       MOVE_DOWN_KEY,  KeyCode_Control );
+
 Bind( move_left_alpha_numeric_boundary,  KeyCode_Left,   KeyCode_Control );
 Bind( move_right_alpha_numeric_boundary, KeyCode_Right,  KeyCode_Control );
+Bind( move_left_alpha_numeric_or_camel_boundary,  KeyCode_Left, KeyCode_Alt);
+Bind( move_right_alpha_numeric_or_camel_boundary, KeyCode_Right, KeyCode_Alt);
 Bind( move_up_to_blank_line_end,         KeyCode_Up,     KeyCode_Control );
 Bind( move_down_to_blank_line_end,       KeyCode_Down,   KeyCode_Control );
 

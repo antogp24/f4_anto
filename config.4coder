@@ -21,7 +21,7 @@ use_paren_helper = true;
 use_comment_keywords = true;
 lister_whole_word_backspace_when_modified = false;
 show_line_number_margins = false;
-enable_output_wrapping = false;
+enable_output_wrapping = true;
 
 enable_undo_fade_out = false;
 
@@ -66,7 +66,7 @@ highlight_line_at_cursor = true;
 
 //Font
 default_font_name = "liberation-mono.ttf";
-default_font_size = 15;
+default_font_size = 14;
 default_font_hinting = true;
 
 // aa modes:
@@ -101,5 +101,5 @@ f4_disable_brace_lines = true;
 // f4_disable_cursor_token_occurance = true;
 
 // NOTE(anto): FOR NO DISTRACTIONS
-anto_cursor_should_glow = false;
+anto_cursor_should_glow = true;
 anto_cursor_modal_color_in_top_base = false;

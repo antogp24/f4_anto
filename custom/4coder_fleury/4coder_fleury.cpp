@@ -544,7 +544,50 @@ CUSTOM_DOC("Fleury startup event")
     String_Const_u8_Array file_names = input.event.core.file_names;
     load_themes_default_folder(app);
     default_4coder_initialize(app, file_names);
-    default_4coder_one_panel(app, file_names);
+    
+    //~ NOTE(rjf): Open compilation buffer.
+    
+    Buffer_ID compilation_buffer = 0;
+    {
+        compilation_buffer = create_buffer(app, string_u8_litexpr("*compilation*"),
+                                           BufferCreate_NeverAttachToFile |
+                                           BufferCreate_AlwaysNew);
+        buffer_set_setting(app, compilation_buffer, BufferSetting_Unimportant, true);
+        buffer_set_setting(app, compilation_buffer, BufferSetting_ReadOnly, true);
+    }
+    
+    //~ NOTE(anto): My buffer startup setup.
+    {
+        Face_ID face_id = get_face_id(app, compilation_buffer);
+        Face_Metrics metrics = get_face_metrics(app, face_id);
+        Buffer_Identifier left = buffer_identifier(string_u8_litexpr("*compilation*"));
+        Buffer_Identifier right = buffer_identifier(string_u8_litexpr("*scratch*"));
+        
+        // Changing to the file opened on startup, if it exists.
+        if (file_names.count > 0)
+        {
+            right = buffer_identifier(file_names.vals[0]);
+        }
+        
+        Buffer_ID left_id = buffer_identifier_to_id(app, left);
+        Buffer_ID right_id = buffer_identifier_to_id(app, right);
+        i32 split_size = (i32)(metrics.line_height*25.0f);
+        
+        // Left Panel
+        View_ID left_view = get_active_view(app, Access_Always);
+        global_compilation_view = left_view;
+        view_set_buffer(app, left_view, left_id, 0);
+        view_set_passive(app, left_view, true);
+        
+        // Right Panel
+        open_panel_vsplit(app);
+        View_ID right_view = get_active_view(app, Access_Always);
+        new_view_settings(app, right_view);
+        view_set_split_pixel_size(app, left_view, split_size);
+        view_set_buffer(app, right_view, right_id, 0);
+    }
+    
+    //~
     
     b32 auto_load = def_get_config_b32(vars_save_string_lit("automatically_load_project"));
     if (auto_load)
@@ -554,15 +597,6 @@ CUSTOM_DOC("Fleury startup event")
     
     //~ NOTE(rjf): Open special buffers.
     {
-        // NOTE(rjf): Open compilation buffer.
-        {
-            Buffer_ID buffer = create_buffer(app, string_u8_litexpr("*compilation*"),
-                                             BufferCreate_NeverAttachToFile |
-                                             BufferCreate_AlwaysNew);
-            buffer_set_setting(app, buffer, BufferSetting_Unimportant, true);
-            buffer_set_setting(app, buffer, BufferSetting_ReadOnly, true);
-        }
-        
         // NOTE(rjf): Open lego buffer.
         {
             Buffer_ID buffer = create_buffer(app, string_u8_litexpr("*lego*"),
@@ -681,6 +715,29 @@ CUSTOM_DOC("Fleury startup event")
             else
             {
                 global_small_code_face = face_that_should_totally_be_there;
+            }
+        }
+        
+        //~ NOTE(anto): Medium code font.
+        {
+            Face_Description normal_code_desc = get_face_description(app, get_face_id(app, 0));
+            
+            Face_Description desc = {0};
+            { 
+                desc.font.file_name =  push_u8_stringf(scratch, "%.*sfonts/Inconsolata-Regular.ttf", string_expand(bin_path));
+                desc.parameters.pt_size = normal_code_desc.parameters.pt_size + 2;
+                desc.parameters.bold = 1;
+                desc.parameters.italic = 1;
+                desc.parameters.hinting = 0;
+            }
+            
+            if(IsFileReadable(desc.font.file_name))
+            {
+                global_anto_code_face = try_create_new_face(app, &desc);
+            }
+            else
+            {
+                global_anto_code_face = face_that_should_totally_be_there;
             }
         }
     }

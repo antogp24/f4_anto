@@ -741,8 +741,6 @@ default_4coder_one_panel(Application_Links *app, Buffer_Identifier buffer){
 function void
 default_4coder_one_panel(Application_Links *app, String_Const_u8_Array file_names)
 {
-    // NOTE(anto): Jejeje, I prefer the scratch buffer by default.
-    
     Buffer_Identifier buffer = buffer_identifier(string_u8_litexpr("*scratch*"));
     
     if (file_names.count > 0){

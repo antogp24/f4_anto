@@ -1,4 +1,4 @@
-REM Copies the necessary files and folders to "4ed", compresses it to "4ed.zip" and deletes "4ed"
+REM Copies the necessary files and folders to "4ed", compresses it to "f4_anto_win_x64.zip" and deletes "4ed"
 
 mkdir 4ed
 

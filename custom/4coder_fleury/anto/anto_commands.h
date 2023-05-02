@@ -16,12 +16,14 @@ bool is_on_end_of_line(Application_Links *app)
 }
 
 internal f32
-get_half_page_jump(Application_Links *app, View_ID view)
+anto_get_half_page_jump(Application_Links *app, View_ID view)
 {
     Rect_f32 region = view_get_buffer_region(app, view);
     f32 page_jump = rect_height(region)*.9f;
     return(page_jump/1.2f);
 }
+
+#include "anto_search.cpp"
 
 // Normal Mode Commands
 
@@ -29,7 +31,7 @@ CUSTOM_COMMAND_SIG(half_page_up)
 CUSTOM_DOC("(Control+U): Scrolls the view and cursor up by half a view height.")
 {
     View_ID view = get_active_view(app, Access_ReadVisible);
-    f32 page_jump = get_half_page_jump(app, view);
+    f32 page_jump = anto_get_half_page_jump(app, view);
     move_vertical_pixels(app, -page_jump/2);
     center_view( app );
 }
@@ -38,7 +40,7 @@ CUSTOM_COMMAND_SIG(half_page_down)
 CUSTOM_DOC("(Control+D): Scrolls the view and cursor down by half a view height.")
 {
     View_ID view = get_active_view(app, Access_ReadVisible);
-    f32 page_jump = get_half_page_jump(app, view);
+    f32 page_jump = anto_get_half_page_jump(app, view);
     move_vertical_pixels(app, page_jump/2);
     center_view( app );
 }
@@ -157,6 +159,25 @@ CUSTOM_DOC("Go to visual mode when dragging the cursor.")
     click_set_cursor_and_mark( app );
 }
 
+// Insert Mode
+
+CUSTOM_COMMAND_SIG(anto_autocomplete)
+CUSTOM_DOC("Word completion with a pretty drop-down.")
+{
+    View_ID view = get_active_view(app, Access_ReadWriteVisible);
+    Buffer_ID buffer = view_get_buffer(app, view, Access_ReadWriteVisible);
+    
+    if (buffer != 0)
+    {
+        Edit edit = anto_get_word_complete_from_user_drop_down(app);
+        if (edit.text.size > 0)
+        {
+            buffer_replace_range(app, buffer, edit.range, edit.text);
+            view_set_cursor_and_preferred_x(app, view, seek_pos(edit.range.min + edit.text.size));
+        }
+    }
+}
+
 // Dumb Autocomplete Commands
 
 CUSTOM_COMMAND_SIG( write_curly )
@@ -190,7 +211,11 @@ CUSTOM_DOC("(Ctrl/Alt+N): Move to the next element in the lister.")
 {
     View_ID view = get_active_view(app, 0);
     Lister *lister = view_get_lister(app, view);
-    lister->handlers.navigate(app, view, lister, 1); // Forward
+    
+    if (lister->handlers.navigate != 0)
+    {
+        lister->handlers.navigate(app, view, lister, 1); // Forward
+    }
 }
 
 CUSTOM_COMMAND_SIG( lister_prev )
@@ -198,7 +223,10 @@ CUSTOM_DOC("(Ctrl/Alt+P): Move to the previous element in the lister.")
 {
     View_ID view = get_active_view(app, 0);
     Lister *lister = view_get_lister(app, view);
-    lister->handlers.navigate(app, view, lister, -1); // Backwards
+    if (lister->handlers.navigate != 0)
+    {
+        lister->handlers.navigate(app, view, lister, -1); // Backwards
+    }
 }
 
 #endif //ANTO_COMMANDS_H
